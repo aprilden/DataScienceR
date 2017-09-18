@@ -1,0 +1,33 @@
+Exercise 3.6.1 #6 from Data Science for R
+Graphs from L to R, top to bottom
+
+```{r}
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy))+
+  geom_point()+
+  geom_smooth(se = FALSE)
+```
+
+```{r}
+ggplot(data = mpg, mapping= aes(x = displ, y = hwy, group = drv))+
+  geom_point()+
+  geom_smooth(se = FALSE)
+```
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy, group = drv, color = drv))+
+  geom_point()+
+  geom_smooth(se = FALSE)
+```
+
+```{r}
+ggplot(data = mpg, mapping= aes(x = displ, y = hwy))+
+  geom_point(mapping = aes (color = drv))+
+  geom_smooth(se = FALSE)
+```
+
