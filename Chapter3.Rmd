@@ -1,33 +1,54 @@
 Exercise 3.6.1 #6 from Data Science for R
 Graphs from L to R, top to bottom
+Images of plots were given, the goal was to write the R code that produces the plots.
 
+
+Install and use tidyverse to be able to use ggplot.
 ```{r}
 install.packages("tidyverse")
 library(tidyverse)
 ```
 
-
+Top left plot
 ```{r}
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy))+
   geom_point()+
   geom_smooth(se = FALSE)
 ```
 
+Top right plot
 ```{r}
 ggplot(data = mpg, mapping= aes(x = displ, y = hwy, group = drv))+
   geom_point()+
   geom_smooth(se = FALSE)
 ```
 
+Middle left plot
 ```{r}
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy, group = drv, color = drv))+
   geom_point()+
   geom_smooth(se = FALSE)
 ```
 
+Middle right plot
 ```{r}
 ggplot(data = mpg, mapping= aes(x = displ, y = hwy))+
   geom_point(mapping = aes (color = drv))+
   geom_smooth(se = FALSE)
+```
+
+Bottom left plot
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy, linetype = drv))+
+  geom_point(mapping = aes (color = drv))+
+  geom_smooth(se = FALSE)+
+  scale_linetype_manual(values = c("solid", "dashed","longdash"))
+```
+
+Bottom right plot
+```{r}
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy), stroke = 2.5, color = "white")+
+  geom_point(mapping = aes(x = displ, y = hwy, color = drv))
 ```
 
